@@ -36,6 +36,8 @@ char guardarReporte();
 int readc(char *cad,int n);
 void mainTitle();
 
+
+//Funciones y metodos
 void main(){
     setlocale(LC_ALL,"Spanish");
     menu();
@@ -306,6 +308,7 @@ void store(){
     int claveReo = 0;
     char repite = 1;
     char respuesta[MAX_LNGH];
+    int auxEscolaridad, auxNacionalidad;
     
     do{
         system("cls");
@@ -330,8 +333,35 @@ void store(){
             readc(aux, MAX_LNGH);
             sscanf(aux, "%d", &reo.edad);
 
-            printf("\tEscolaridad del Reo: ");
-            readc(reo.escolaridad, MAX_LNGH);
+            printf("\n\t[1] Analfabeto\n\t[2] Primaria\n\t[3] Secundaria\n\t[4] Preparatoria\n\t[5] Universidad\n\t[6] Post Grado\n\tSeleccione la escolaridad del reo: ");
+            scanf("%d",&auxEscolaridad);
+
+
+            switch (auxEscolaridad)
+            {
+                case 1:
+                    strcpy(reo.escolaridad,"Analfabeto");
+                    break;
+                case 2:
+                    strcpy(reo.escolaridad,"Primaria");
+                    break;
+                case 3:
+                    strcpy(reo.escolaridad,"Secundaria");
+                    break;
+                case 4:
+                    strcpy(reo.escolaridad,"Preparatoria");
+                    break;
+                case 5:
+                    strcpy(reo.escolaridad,"Universidad");
+                    break;
+                case 6:
+                    strcpy(reo.escolaridad,"Post Grado");
+                    break;
+                default:
+                    readc(reo.escolaridad, MAX_LNGH);
+                    break;
+            }
+            
 
             printf("\tCódigo del delito cometido: ");
             readc(aux, MAX_LNGH);
@@ -684,7 +714,7 @@ int readc(char *cad, int n)
     if (c != '\n' && c != EOF) /* es un caracter */
         while ((c = getchar()) != '\n' && c != EOF);
     return 1;
-}//Fin  de readc
+}
 
 //Función para mostrar titulo del programa
 void mainTitle()
