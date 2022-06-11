@@ -326,13 +326,16 @@ void store(){
             reo.clave = claveReo;
             
             //Solicitar el resto de datos
+            //Nombre
             printf("\tNombre del Reo: ");
             readc(reo.nombre, MAX_LNGH);
 
+            //Edad
             printf("\tEdad: ");
             readc(aux, MAX_LNGH);
             sscanf(aux, "%d", &reo.edad);
 
+            //Escolaridad
             printf("\n\t[1] Analfabeto\n\t[2] Primaria\n\t[3] Secundaria\n\t[4] Preparatoria\n\t[5] Universidad\n\t[6] Post Grado\n\tSeleccione la escolaridad del reo: ");
             scanf("%d",&auxEscolaridad);
 
@@ -362,13 +365,41 @@ void store(){
                     break;
             }
             
-
-            printf("\tCódigo del delito cometido: ");
+            //Codigo de delito
+            printf("\n\t[1] Delito contra la salud\n\t[2] Robo con arma de fuego\n\t[3] Acoso Sexual\n\t[4] Agrupaciones ilícitas\n\t[5] Otros\n\tSeleccione Código del delito cometido por el reo: ");
             readc(aux, MAX_LNGH);
             sscanf(aux, "%d", &reo.cod_delito);
 
-            printf("\tNacionalidad del Reo: ");
-            readc(reo.nacionalidad, MAX_LNGH);
+            //Nacionalidad del reo
+            printf("\n\t[1] Salvadoreño\n\t[2] Estadounidense\n\t[3] Guatemalteco\n\t[4] Hondureño\n\t[5] Nicaraguense\n\t[6] Mexicano\n\t[7] Otro\n\tSeleccione la Nacionalidad del Reo: ");
+            scanf("%d",&auxNacionalidad);
+            switch (auxNacionalidad)
+            {
+                case 1:
+                    strcpy(reo.nacionalidad,"Salvadoreño");
+                    break;
+                case 2:
+                    strcpy(reo.nacionalidad,"Estadounidense");
+                    break;
+                case 3:
+                    strcpy(reo.nacionalidad,"Guatemalteco");
+                    break;
+                case 4:
+                    strcpy(reo.nacionalidad,"Hondureño");
+                    break;
+                case 5:
+                    strcpy(reo.nacionalidad,"Nicaraguense");
+                    break;
+                case 6:
+                    strcpy(reo.nacionalidad,"Mexicano");
+                    break;
+                case 7:
+                    strcpy(reo.nacionalidad,"Otro");
+                    break;
+                default:
+                    readc(reo.nacionalidad, MAX_LNGH);
+                    break;
+            }
 
             
             //Insertar el reo en el archivo
